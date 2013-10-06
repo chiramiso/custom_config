@@ -15,20 +15,6 @@ setopt AUTO_CD
 # Allow comments even in interactive shells (especially for Muness)
 setopt INTERACTIVE_COMMENTS
 
-# ===== Completion 
-
-# Allow completion from within a word/phrase
-setopt COMPLETE_IN_WORD 
-
-# When completing from the middle of a word, move the cursor to the end of the word
-setopt ALWAYS_TO_END            
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
-
 # ===== Titlebar
 # Uncomment following line if you want to disable autosetting terminal title.
 DISABLE_AUTO_TITLE="true"
@@ -39,13 +25,9 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git bundler rails ruby)
 
-
-
 # ===== Prompt
-
 # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 setopt PROMPT_SUBST
-
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU
 
