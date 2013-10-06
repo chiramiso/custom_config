@@ -1,13 +1,47 @@
-syntax on
-set number
-set showtabline=2
-set mouse=a
-set expandtab
-set tabstop=2
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-colorscheme elflord 
+" vim settings
+
+" Pathogen
 execute pathogen#infect()
 filetyp plugin indent on
+
+" Language for speel checking
+set spelllang=de_DE
+
+syntax on
+set number
+set showmode
+
+" set cursorline
+set showmatch
+set hlsearch
+set ignorecase
+
+" enables mouse clicks
+set mouse=a
+
+" settings for tabstops
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set showtabline=2
+set autoindent
+
+" allow vim to switch away from changed buffers wo safeing and error msg
+set hidden
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+colorscheme elflord 
+
+" Enable colors for status line to show different modes
+" first, enable status line always
+set laststatus=2
+" now set it up to change the status line based on mode
+if version >= 700
+  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Cyan
+  au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+endif
+
 
 # Zeigt die Nummer des Tabs im Tab an
 set tabline=%!MyTabLine()  " custom tab pages line
