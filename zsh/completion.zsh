@@ -51,3 +51,16 @@ zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain host
 zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
 zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
+
+# Allow completion from within a word/phrase
+setopt COMPLETE_IN_WORD 
+
+# When completing from the middle of a word, move the cursor to the end of the word
+setopt ALWAYS_TO_END            
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
+
