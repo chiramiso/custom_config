@@ -48,7 +48,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 set hidden
 
 " start NERDTree at startup
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 colorscheme elflord 
