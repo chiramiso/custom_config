@@ -1,6 +1,9 @@
-" vim settings
+"vim settings
+set nocompatible " disable compatibility with vi
+set encoding=utf-8 " it's what is says
+set showcmd " show incomplete commands
 
-" Pathogen
+" Pathogen / handles plugins
 execute pathogen#infect()
 filetype plugin indent on
 
@@ -13,23 +16,39 @@ set showmode
 
 set cursorline
 set cursorcolumn
+
+" Searchoptions
 set showmatch
 set hlsearch
 set ignorecase
+set smartcase
+set incsearch
 
 " enables mouse clicks
 set mouse=a
 
-" settings for tabstops
+" settings for tabstops and whitespaces
+set nowrap " disable line wrapping / maybe not necessary
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set showtabline=2
 set autoindent
+set backspace=indent,eol,start " backspace through everything in insert mode
+
+"custom keybindigs
+"zweimal schnell 'j' druecken -> Escape
+imap jj <esc>
+let mapleader=","
+nnoremap <Leader><Leader> <C-ˆ>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " allow vim to switch away from changed buffers wo safeing and error msg
 set hidden
+
+" start NERDTree at startup
+let g:nerdtree_tabs_open_on_console_startup=1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 colorscheme elflord 
