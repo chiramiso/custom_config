@@ -1,0 +1,10 @@
+LaTeX-Box
+autoclose
+ctrlp.vim
+nerdtree
+snipmate.vim
+vim-bundler
+vim-fuzzyfinder-pathogen
+vim-nerdtree-tabs
+vim-rails
+vim-rake
