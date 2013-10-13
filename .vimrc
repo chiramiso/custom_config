@@ -45,6 +45,7 @@ imap jj <esc>
 let mapleader=","
 nnoremap <Leader><Leader> <C-ˆ>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>m :Latexmk<CR> " maps komma-m to Latexmk command
 
 " allow vim to switch away from changed buffers wo safeing and error msg
 set hidden
