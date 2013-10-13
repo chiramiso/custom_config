@@ -1,5 +1,7 @@
 clear Lock
 
+keycode  29 = z Z y Y ae AE guillemotright U203A z Z
+keycode  53 = y Y z Z udiaeresis Udiaeresis leftarrow yen y Y
 keycode  66 = Control_L NoSymbol Control_L
 keycode 134 = Escape NoSymbol Escape
 keycode 135 = Multi_key

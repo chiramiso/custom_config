@@ -1,4 +1,5 @@
 "vim settings
+
 set nocompatible " disable compatibility with vi
 set encoding=utf-8 " it's what is says
 set showcmd " show incomplete commands
@@ -8,7 +9,8 @@ execute pathogen#infect()
 filetype plugin indent on
 
 " Language for spell checking
-set spelllang=de_DE
+" set spell " better of for most texts, enable if you want to spellcheck your texts
+set spelllang=de_de
 
 syntax on
 set number
@@ -28,7 +30,7 @@ set incsearch
 set mouse=a
 
 " settings for tabstops and whitespaces
-set nowrap " disable line wrapping / maybe not necessary
+" set nowrap " disable line wrapping / maybe not necessary
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
