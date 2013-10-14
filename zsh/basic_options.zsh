@@ -31,6 +31,9 @@ setopt PROMPT_SUBST
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU
 
+# Load custom keyboardsettings
+xmodmap ~/.custom_config/.Xmodmap
+
 # always use zsh in vim-mode
 bindkey -v
 

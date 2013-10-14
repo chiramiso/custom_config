@@ -25,6 +25,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+nnoremap <CR> :noh<CR><CR> " enables you to disable highlighting after search by hitting Enter
 
 " enables mouse clicks
 set mouse=a
