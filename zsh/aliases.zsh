@@ -41,3 +41,6 @@ alias gv='git log --pretty=format:'%s' | cut -d " " -f 1 | sort | uniq -c | sort
 
 # tmux
 alias devel='tmuxinator work'
+
+# fairnopoly stuff
+alias deploy="ssh deploy@development.fairnopoly.de"
