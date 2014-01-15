@@ -26,7 +26,7 @@ windows:
            - sudo htop
            - irb
 #  - editor: vim
-  - shell: git pull
+  - shell: zsh
   - console: bundle exec rails c
   - database: bundle exec rails db
   - server: bundle exec rails s
