@@ -31,9 +31,6 @@ setopt PROMPT_SUBST
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU
 
-# Load custom keyboardsettings
-xmodmap ~/.custom_config/.Xmodmap
-
 # always use zsh in vim-mode
 bindkey -v
 
@@ -51,3 +48,6 @@ export EDITOR=vim
 
 # set the PATH for rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# Load custom keyboardsettings
+xmodmap ~/.custom_config/.Xmodmap
