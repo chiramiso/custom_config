@@ -1,24 +1,61 @@
-"vim settings
+" All the vundle stuff
+" https://github.com/gmarik/Vundle.vim
+"
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-bundler'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'mhinz/vim-startify'
+
+
+
+" ****************************************************************************************
+" Startify stuff
+"
+let g:startify_custom_header = map(split(system('fortune | cowsay'),'\n'),'"   ". v:val') + ['','']
+let g:startify_bookmarks = ['~/.custom_config/.vimrc']
+
+
+
+" ****************************************************************************************
+" from here on are all my Vim settings
 "
 " autoload .vimrc file
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+set shortmess+=I " Remove the startup message when started wo file
+
 set nocompatible " disable compatibility with vi
 set noswapfile " disables the swap file
 set nobackup " disables vim's backup files
 nnoremap Q <nop> " disable Q for entering Ex mode
-set laststatus=2 " always show statusline
 set encoding=utf-8 " it's what is says
 set showcmd " show incomplete commands
 set autowrite " :write before commands
 set list listchars=tab:»·,trail:· " display trailing whitespaces
 
-" Pathogen / handles plugins
-" execute pathogen#infect()
 filetype plugin indent on
-filetype off                   " required!
+filetype off
 
 " Language for spell checking
 " set spell " better of for most texts, enable if you want to spellcheck your texts
@@ -40,6 +77,9 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+
+set wildmode=longest,list " starts file completion with tab at longest option
+
 nnoremap <CR> :noh<CR><CR> " enables you to disable highlighting after search by hitting Enter
 
 " enables mouse clicks
@@ -55,10 +95,14 @@ set showtabline=2
 set autoindent
 set backspace=indent,eol,start " backspace through everything in insert mode
 
+" new split windows to the right and below
+set splitbelow
+set splitright
+
 "custom keybindigs
 "zweimal schnell 'j' druecken -> Escape
 imap jj <esc>
-let mapleader=","
+let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 nnoremap <Leader>b :tabnew<CR>:BufExplorer<CR>
@@ -92,13 +136,31 @@ nnoremap } }zz
 nnoremap L Lzz
 nnoremap H Hzz
 
+" Remap VIM 0 to first non-blank character
+nnoremap 0 ^
+
+" Breaking lines with \[enter] without having to go to insert mode (myself).
+nmap <leader><cr> i<cr><Esc>
+
+" Will allow you to use :w!! to write to a file using sudo if you forgot to
+" sudo
+" vim file (it will prompt for sudo password when writing)
+cmap w!! %!sudo tee > /dev/null %
+
+" Stuff taken from
+" https://github.com/r00k/dotfiles/blob/master/vimrc
+command! Q q
+command! W w
+
+" Set 10 lines to the cursor when moving up/down with j and k
+set scrolloff=10
+
 " allow vim to switch away from changed buffers wo safeing and error msg
 set hidden
 
 " start NERDTree at startup
 " let g:nerdtree_tabs_open_on_console_startup=1
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 colorscheme elflord
 
 " Enable colors for status line to show different modes
@@ -110,24 +172,8 @@ if version >= 700
   au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 endif
 
-" Settings for Vim-Latex
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-" filetype plugin on
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-"
-" OPTIONAL: This enables automatic indentation as you type.
-" filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
+" ****************************************************************************************
 " Zeigt die Nummer des Tabs im Tab an
 set tabline=%!MyTabLine()  " custom tab pages line
 function MyTabLine()
