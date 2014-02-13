@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My bundles here:
@@ -46,6 +46,8 @@ endif
 set shortmess+=I " Remove the startup message when started wo file
 
 set nocompatible " disable compatibility with vi
+filetype plugin indent on
+filetype off
 set noswapfile " disables the swap file
 set nobackup " disables vim's backup files
 nnoremap Q <nop> " disable Q for entering Ex mode
@@ -53,9 +55,6 @@ set encoding=utf-8 " it's what is says
 set showcmd " show incomplete commands
 set autowrite " :write before commands
 set list listchars=tab:»·,trail:· " display trailing whitespaces
-
-filetype plugin indent on
-filetype off
 
 " Language for spell checking
 " set spell " better of for most texts, enable if you want to spellcheck your texts
@@ -161,6 +160,10 @@ set hidden
 " start NERDTree at startup
 " let g:nerdtree_tabs_open_on_console_startup=1
 
+" Options for easymotion
+let g:EasyMotion_do_shade = 0
+hi link EasyMotionTarget ErrorMsg
+
 colorscheme elflord
 
 " Enable colors for status line to show different modes
@@ -171,6 +174,24 @@ if version >= 700
   au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Cyan
   au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 endif
+
+
+" ****************************************************************************************
+" Highlight and remove trailing whitespaces
+"
+" The Highlight part
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" The Remove Part
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+autocmd BufWritePre * :call TrimWhiteSpace()
 
 
 " ****************************************************************************************
