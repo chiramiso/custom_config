@@ -138,6 +138,9 @@ nnoremap H Hzz
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
 
+" Map gp so that it selects the last pasted text
+nnoremap gp `[v`]
+
 " Breaking lines with \[enter] without having to go to insert mode (myself).
 nmap <leader><cr> i<cr><Esc>
 
