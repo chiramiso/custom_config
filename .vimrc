@@ -1,3 +1,5 @@
+set nocompatible " disable compatibility with vi
+filetype off
 " All the vundle stuff
 " https://github.com/gmarik/Vundle.vim
 "
@@ -28,7 +30,8 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
-
+Bundle "artnez/vim-wipeout"
+Bundle 'kchmck/vim-coffee-script'
 
 
 " ****************************************************************************************
@@ -49,9 +52,7 @@ endif
 
 set shortmess+=I " Remove the startup message when started wo file
 
-set nocompatible " disable compatibility with vi
 filetype plugin indent on
-filetype off
 set noswapfile " disables the swap file
 set nobackup " disables vim's backup files
 nnoremap Q <nop> " disable Q for entering Ex mode
@@ -65,6 +66,7 @@ set list listchars=tab:»·,trail:· " display trailing whitespaces
 set spelllang=de_de
 
 syntax on
+syntax enable
 set number
 set showmode
 
