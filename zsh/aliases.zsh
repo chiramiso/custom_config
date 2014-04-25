@@ -38,9 +38,9 @@ alias gcl='git clone'
 alias gta='git tag -a -m'
 alias gf='git reflog'
 alias gv='git log --pretty=format:'%s' | cut -d " " -f 1 | sort | uniq -c | sort -nr'
+alias gpull='git pull origin'
+alias gpush='git push origin'
 
 # tmux
 alias devel='tmuxinator work'
-
-# fairnopoly stuff
-alias deploy="ssh deploy@development.fairnopoly.de"
+alias mux='tmuxinator Work'

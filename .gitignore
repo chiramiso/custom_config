@@ -2,3 +2,8 @@
 *.swp
 *.swn
 *.orig
+
+*BACKUP*
+*BASE*
+*LOCAL*
+*REMOTE*
