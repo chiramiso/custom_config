@@ -1,4 +1,6 @@
-" All the vundle stuff
+" vim:fdm=marker
+
+" All the vundle stuff {{{
 " https://github.com/gmarik/Vundle.vim
 "
 set rtp+=~/.vim/bundle/vundle
@@ -28,24 +30,23 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
+" }}}
 
-
-
-" ****************************************************************************************
-" Startify stuff
+" Startify stuff {{{
 "
 let g:startify_custom_header = map(split(system('fortune | cowsay'),'\n'),'"   ". v:val') + ['','']
 let g:startify_bookmarks = ['~/.custom_config/.vimrc']
-
+" }}}
 
 
 " ****************************************************************************************
 " from here on are all my Vim settings
 "
-" autoload .vimrc file
+" autoload .vimrc file {{{
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
+" }}}
 
 set shortmess+=I " Remove the startup message when started wo file
 
