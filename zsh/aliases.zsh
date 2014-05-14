@@ -9,7 +9,6 @@ alias lsd="ls -aFhlG" # --color=auto"
 alias ll="ls -GFhl" # --color=auto"
 
 # directory movement
-alias work="cd ~/Documents/Work/Site/fairnopoly"
 alias ..="cd .."
 alias ...="cd ../.."
 alias home="cd ~"
@@ -40,7 +39,3 @@ alias gf='git reflog'
 alias gv='git log --pretty=format:'%s' | cut -d " " -f 1 | sort | uniq -c | sort -nr'
 alias gpull='git pull origin'
 alias gpush='git push origin'
-
-# tmux
-alias devel='tmuxinator work'
-alias mux='tmuxinator Work'

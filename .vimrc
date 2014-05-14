@@ -34,6 +34,7 @@ Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 Bundle "artnez/vim-wipeout"
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'majutsushi/tagbar'
 " }}}
 
 " Startify stuff {{{
@@ -151,6 +152,9 @@ nnoremap gp `[v`]
 
 " Breaking lines with \[enter] without having to go to insert mode (myself).
 nmap <leader><cr> i<cr><Esc>
+
+" Toggle TagBar
+nmap <F8> :TagbarToggle<CR>
 
 " Will allow you to use :w!! to write to a file using sudo if you forgot to
 " sudo
