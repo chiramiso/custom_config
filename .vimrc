@@ -113,7 +113,9 @@ imap jj <esc>
 let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
-nnoremap <Leader>b :tabnew<CR>:BufExplorer<CR>
+nnoremap <Leader>b :BufExplorer<CR>
+nnoremap <Leader>h :bp<CR>
+nnoremap <Leader>l :bn<CR>
 
 nnoremap T :tabnew<Space>
 
