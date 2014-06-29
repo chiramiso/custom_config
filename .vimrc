@@ -20,7 +20,6 @@ Bundle 'tpope/vim-rake'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-bundler'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -35,6 +34,8 @@ Bundle "honza/vim-snippets"
 Bundle "artnez/vim-wipeout"
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
+Bundle 'scrooloose/syntastic'
 " }}}
 
 " Startify stuff {{{
@@ -76,8 +77,12 @@ set showmode
 set cursorline
 set cursorcolumn
 
-" Powerline settings
-" let g:Powerline_symbols = 'fancy'
+" airline settings
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Searchoptions
 set showmatch
