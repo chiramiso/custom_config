@@ -59,11 +59,13 @@ set shortmess+=I " Remove the startup message when started wo file
 filetype plugin indent on
 set noswapfile " disables the swap file
 set nobackup " disables vim's backup files
+set nowritebackup
 nnoremap Q <nop> " disable Q for entering Ex mode
 set encoding=utf-8 " it's what is says
 set showcmd " show incomplete commands
 set autowrite " :write before commands
 set list listchars=tab:»·,trail:· " display trailing whitespaces
+set ruler
 
 " Language for spell checking
 " set spell " better of for most texts, enable if you want to spellcheck your texts
@@ -157,6 +159,12 @@ nnoremap 0 ^
 " Map gp so that it selects the last pasted text
 nnoremap gp `[v`]
 
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
 " Breaking lines with \[enter] without having to go to insert mode (myself).
 nmap <leader><cr> i<cr><Esc>
 
@@ -180,7 +188,7 @@ set scrolloff=10
 set hidden
 
 " start NERDTree at startup
-" let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " Options for easymotion
 let g:EasyMotion_do_shade = 0
@@ -196,6 +204,9 @@ if version >= 700
   au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Cyan
   au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 endif
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
 
 
 " ****************************************************************************************
@@ -214,6 +225,11 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 autocmd BufWritePre * :call TrimWhiteSpace()
+
+" ****************************************************************************************
+" Search: Use silver searcher instead of Ack
+"
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
 " ****************************************************************************************
