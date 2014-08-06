@@ -2,6 +2,7 @@ set nocompatible " disable compatibility with vi
 filetype off
 " vim:fdm=marker
 
+
 " All the vundle stuff {{{
 " https://github.com/gmarik/Vundle.vim
 "
@@ -23,10 +24,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'mhinz/vim-startify'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -38,6 +36,8 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'mileszs/ack.vim'
 Plugin 'yegappan/mru'
+Plugin 'shougo/unite.vim'
+Plugin 'vim-scripts/YankRing.vim'
 
 call vundle#end()
 " }}}
@@ -124,18 +124,17 @@ imap jj <esc>
 let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
-nnoremap <Leader>b :BufExplorer<CR>
 nnoremap <Leader>h :bp<CR>
 nnoremap <Leader>l :bn<CR>
+nnoremap <Leader>y :YRShow<CR>
+nnoremap <Leader>b :Unite buffer<CR>
+nnoremap <Leader>f :Unite file<CR>
+nnoremap <Leader>r :Unite file_rec/async<CR>
 
 nnoremap T :tabnew<Space>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
-" Switch between buffers
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
 
 " Use cursor keys to move line up oder down
 nnoremap <Up> :m-2<CR>==
