@@ -6,12 +6,12 @@ filetype off
 " All the vundle stuff {{{
 " https://github.com/gmarik/Vundle.vim
 "
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My bundles here:
 "
