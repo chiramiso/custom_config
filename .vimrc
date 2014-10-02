@@ -43,13 +43,6 @@ call vundle#end()
 " }}}
 filetype plugin indent on
 
-" Startify stuff {{{
-"
-let g:startify_custom_header = map(split(system('fortune | cowsay'),'\n'),'"   ". v:val') + ['','']
-let g:startify_bookmarks = ['~/.custom_config/.vimrc']
-" }}}
-
-
 " ****************************************************************************************
 " from here on are all my Vim settings
 "
@@ -96,6 +89,9 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+
+" needed for using system clipboard
+set clipboard=unnamed
 
 set wildmode=longest,list " starts file completion with tab at longest option
 
