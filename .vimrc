@@ -38,6 +38,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'yegappan/mru'
 Plugin 'shougo/unite.vim'
 Plugin 'vim-scripts/YankRing.vim'
+Plugin 'jpalardy/vim-slime'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'gorkunov/smartgf.vim'
 
 call vundle#end()
 " }}}
@@ -63,6 +66,7 @@ set showcmd " show incomplete commands
 set autowrite " :write before commands
 set list listchars=tab:»·,trail:· " display trailing whitespaces
 set ruler
+set breakindent " Indenting when lines are wrapped
 
 " Language for spell checking
 " set spell " better of for most texts, enable if you want to spellcheck your texts
@@ -92,6 +96,9 @@ set incsearch
 
 " needed for using system clipboard
 set clipboard=unnamed
+
+" Configuration for vim.slime with tmux
+let g:slime_target = "tmux"
 
 set wildmode=longest,list " starts file completion with tab at longest option
 
