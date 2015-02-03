@@ -16,6 +16,7 @@ alias bk="cd $OLDPWD"
 
 # Ruby stuff
 alias ri='ri -Tf ansi'
+alias rt='rake test CI=true'
 
 # git
 alias ga='git add'

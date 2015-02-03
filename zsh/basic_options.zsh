@@ -50,4 +50,4 @@ export EDITOR=vim
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Load custom keyboardsettings
-xmodmap ~/.custom_config/.Xmodmap
+# xmodmap ~/.custom_config/.Xmodmap
