@@ -36,11 +36,17 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'mileszs/ack.vim'
 Plugin 'yegappan/mru'
-Plugin 'shougo/unite.vim'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'gorkunov/smartgf.vim'
+Plugin 'zah/nimrod.vim'
+Plugin 'szw/vim-g'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'ngmy/vim-rubocop'
 
 call vundle#end()
 " }}}
@@ -94,6 +100,9 @@ set ignorecase
 set smartcase
 set incsearch
 
+" enable matchit.vim
+runtime macros/matchit.vim
+
 " needed for using system clipboard
 set clipboard=unnamed
 
@@ -101,6 +110,9 @@ set clipboard=unnamed
 let g:slime_target = "tmux"
 
 set wildmode=longest,list " starts file completion with tab at longest option
+
+" enables CTAGS for vim
+set tags+=gems.tags
 
 nnoremap <CR> :noh<CR><CR> " enables you to disable highlighting after search by hitting Enter
 
@@ -127,12 +139,19 @@ imap jj <esc>
 let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
-nnoremap <Leader>h :bp<CR>
-nnoremap <Leader>l :bn<CR>
+nnoremap <Leader>m :Mru<CR>
+nnoremap <Leader>j :bp<CR>
+nnoremap <Leader>k :bn<CR>
 nnoremap <Leader>y :YRShow<CR>
-nnoremap <Leader>b :Unite buffer<CR>
-nnoremap <Leader>f :Unite file<CR>
-nnoremap <Leader>r :Unite file_rec/async<CR>
+nnoremap <Leader>b :BufExplorer<CR>
+noremap  <Leader>v :<C-u>vsplit<CR>
+noremap  <Leader>h :<C-u>split<CR>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <Leader>t :Tagbar<CR>
+
+" switch ; and : in normal mode
+nnoremap ; :
 
 nnoremap T :tabnew<Space>
 
@@ -186,6 +205,7 @@ cmap w!! %!sudo tee > /dev/null %
 " https://github.com/r00k/dotfiles/blob/master/vimrc
 command! Q q
 command! W w
+command! E e
 
 " Set 10 lines to the cursor when moving up/down with j and k
 set scrolloff=10
@@ -193,12 +213,17 @@ set scrolloff=10
 " allow vim to switch away from changed buffers wo safeing and error msg
 set hidden
 
+" Config for vim-g (Google search)
+let g:vim_g_query_url = "http://google.com/search?q="
+let g:vim_g_command = "Goo"
+
 " start NERDTree at startup
 " let g:nerdtree_tabs_open_on_console_startup=1
 
 " Options for easymotion
 let g:EasyMotion_do_shade = 0
 hi link EasyMotionTarget ErrorMsg
+map <Leader> <Plug>(easymotion-prefix)
 
 colorscheme elflord
 
