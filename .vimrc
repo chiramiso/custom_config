@@ -6,7 +6,7 @@ filetype off
 " https://github.com/gmarik/Vundle.vim
 "
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+:call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
@@ -15,13 +15,13 @@ Plugin 'gmarik/Vundle.vim'
 " My bundles here:
 "
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-bundler'
-Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -39,7 +39,6 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'gorkunov/smartgf.vim'
-Plugin 'zah/nimrod.vim'
 Plugin 'szw/vim-g'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jlanzarotta/bufexplorer'
@@ -49,13 +48,17 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'kien/ctrlp.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'AndrewRadev/switch.vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'mklabs/vim-backbone'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'joukevandermaas/vim-ember-hbs'
 Plugin 'craigemery/vim-autotag'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 'burnettk/vim-angular'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'todo.vim'
+Plugin 'elzr/vim-json'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plugin 'wikitopian/hardmode'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 " }}}
@@ -112,6 +115,12 @@ set ignorecase
 set smartcase
 set incsearch
 
+" speed things up; reason why this is here: problems with large files (esp
+" ruby) and syntax highlighting
+set re=1
+set ttyfast
+set lazyredraw
+
 " enable matchit.vim
 runtime macros/matchit.vim
 
@@ -129,7 +138,10 @@ set tags+=gems.tags
 nnoremap <CR> :noh<CR><CR> " enables you to disable highlighting after search by hitting Enter
 
 " enables mouse clicks
-set mouse=a
+" set mouse=a
+
+" set updatetime for vimgutter
+set updatetime=250
 
 " settings for tabstops and whitespaces
 " set nowrap " disable line wrapping / maybe not necessary
@@ -151,9 +163,10 @@ imap jj <esc>
 let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
+nnoremap <Leader>gg :GitGutterLineHighlightsToggle<CR>
 nnoremap <Leader>m :Mru<CR>
 nnoremap <Leader>y :YRShow<CR>
-nnoremap <Leader>b :BufExplorer<CR>
+nnoremap <Leader>b :BufExplorerHorizontalSplit<CR>
 noremap  <Leader>v :<C-u>vsplit<CR>
 noremap  <Leader>h :<C-u>split<CR>
 nnoremap <Tab> :bn<CR>
@@ -226,6 +239,17 @@ let g:vim_g_command = "Goo"
 
 " start NERDTree at startup
 " let g:nerdtree_tabs_open_on_console_startup=1
+let g:NERDTreeIndicatorMapCustom = {
+  \ "Modified"  : "✹",
+  \ "Staged"    : "✚",
+  \ "Untracked" : "✭",
+  \ "Renamed"   : "➜",
+  \ "Unmerged"  : "═",
+  \ "Deleted"   : "✖",
+  \ "Dirty"     : "✗",
+  \ "Clean"     : "✔︎",
+  \ "Unknown"   : "?"
+  \ }
 
 " Options for easymotion
 let g:EasyMotion_do_shade = 0
@@ -233,6 +257,7 @@ hi link EasyMotionTarget ErrorMsg
 map <Leader> <Plug>(easymotion-prefix)
 
 colorscheme dracula
+set background=dark
 
 " Enable colors for status line to show different modes
 " first, enable status line always
@@ -254,13 +279,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " CTRL-P config
-set wildignore+=*/.git/*,*/.DS_Store,*/vendor/*,*/doc/*
+set wildignore+=*/.git/*,*/.DS_Store,*/vendor/*,*/doc/*,*/tmp/*,*/node_modules/*,*/bower_components/*
 
 " Macvim specific stuff
 set guioptions-=L " disable scrollbars
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
+
 autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
 :set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
 

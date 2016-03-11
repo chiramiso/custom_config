@@ -23,7 +23,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler rails ruby rake)
+plugins=(git bundler rails ruby rake vi-mode zsh-syntax-highlighting gem pj)
 
 # ===== Prompt
 # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
@@ -33,6 +33,22 @@ setopt AUTO_MENU
 
 # always use zsh in vim-mode
 bindkey -v
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
 
 # set VIMODE according to the current mode (default “[I]”)
 VIMODE='[I]'
@@ -48,3 +64,6 @@ export EDITOR=vim
 
 # Load custom keyboardsettings
 # xmodmap ~/.custom_config/.Xmodmap
+
+# pj config
+PROJECT_PATHS=(~/Documents/coding/vertragslotse/)

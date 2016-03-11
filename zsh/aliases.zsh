@@ -41,3 +41,5 @@ alias gv='git log --pretty=format:'%s' | cut -d " " -f 1 | sort | uniq -c | sort
 alias gpull='git pull origin'
 alias gpush='git push origin'
 alias lundle='bundle --gemfile Gemfile.local'
+
+alias vi='vim'
