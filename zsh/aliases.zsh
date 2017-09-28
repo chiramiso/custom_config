@@ -8,6 +8,10 @@ alias ls="ls -GFh" # --color=auto"
 alias lsd="ls -aFhlG" # --color=auto"
 alias ll="ls -GFhl" # --color=auto"
 
+# history
+alias hs="history"
+alias hsg="history | grep "
+
 # directory movement
 alias ..="cd .."
 alias ...="cd ../.."
@@ -42,4 +46,10 @@ alias gpull='git pull origin'
 alias gpush='git push origin'
 alias lundle='bundle --gemfile Gemfile.local'
 
+# vim
 alias vi='vim'
+
+# tmux
+alias tma='tmux attach-session -t'
+alias tmd='tmux kill-session -t'
+alias tml='tmux list-session'

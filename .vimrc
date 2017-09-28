@@ -2,65 +2,42 @@ set nocompatible " disable compatibility with vi
 filetype off
 " vim:fdm=marker
 
-" All the vundle stuff {{{
-" https://github.com/gmarik/Vundle.vim
+" All the Plug stuff {{{
 "
-set rtp+=~/.vim/bundle/Vundle.vim
-:call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jiangmiao/auto-pairs'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'artnez/vim-wipeout'
+Plug 'bling/vim-airline'
+"Plug 'scrooloose/syntastic'
+Plug 'mileszs/ack.vim'
+Plug 'yegappan/mru'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'jpalardy/vim-slime'
+Plug 'gorkunov/smartgf.vim'
+Plug 'szw/vim-g'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'kien/ctrlp.vim'
+Plug 'AndrewRadev/switch.vim'
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'airblade/vim-gitgutter'
+Plug 'elzr/vim-json'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'myusuf3/numbers.vim'
+Plug 'shougo/neocomplete.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'flazz/vim-colorschemes'
+Plug 'sheerun/vim-polyglot'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'dracula/vim'
 
-" My bundles here:
-"
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-surround'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'artnez/vim-wipeout'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'mileszs/ack.vim'
-Plugin 'yegappan/mru'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'jpalardy/vim-slime'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'gorkunov/smartgf.vim'
-Plugin 'szw/vim-g'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'kien/ctrlp.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'AndrewRadev/switch.vim'
-Plugin 'joukevandermaas/vim-ember-hbs'
-Plugin 'craigemery/vim-autotag'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plugin 'burnettk/vim-angular'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'todo.vim'
-Plugin 'elzr/vim-json'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plugin 'wikitopian/hardmode'
-Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()
+call plug#end()
 " }}}
 filetype plugin indent on
 
@@ -93,6 +70,8 @@ set spelllang=de_de
 syntax on
 syntax enable
 set number
+set nu
+set relativenumber
 set showmode
 
 set cursorline
@@ -132,8 +111,9 @@ let g:slime_target = "tmux"
 
 set wildmode=longest,list " starts file completion with tab at longest option
 
-" enables CTAGS for vim
-set tags+=gems.tags
+" neocomplete.vim
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 nnoremap <CR> :noh<CR><CR> " enables you to disable highlighting after search by hitting Enter
 
@@ -160,6 +140,7 @@ set splitright
 "custom keybindigs
 "zweimal schnell 'j' druecken -> Escape
 imap jj <esc>
+
 let mapleader="," " Sets the leader key
 nnoremap <Leader><Leader> <C-ˆ>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
@@ -171,7 +152,6 @@ noremap  <Leader>v :<C-u>vsplit<CR>
 noremap  <Leader>h :<C-u>split<CR>
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
-nnoremap <Leader>t :Tagbar<CR>
 
 nnoremap T :tabnew<Space>
 
@@ -213,9 +193,6 @@ nnoremap <C-l> <C-w>l
 " Breaking lines with \[enter] without having to go to insert mode (myself).
 nmap <leader><cr> i<cr><Esc>
 
-" Toggle TagBar
-nmap <F8> :TagbarToggle<CR>
-
 " Will allow you to use :w!! to write to a file using sudo if you forgot to
 " sudo
 " vim file (it will prompt for sudo password when writing)
@@ -256,8 +233,12 @@ let g:EasyMotion_do_shade = 0
 hi link EasyMotionTarget ErrorMsg
 map <Leader> <Plug>(easymotion-prefix)
 
-colorscheme dracula
+" Override K for use with devdocs.io
+nmap K <Plug>(devdocs-under-cursor)
+
+colorscheme wasabi256
 set background=dark
+set colorcolumn=81
 
 " Enable colors for status line to show different modes
 " first, enable status line always
@@ -287,7 +268,9 @@ set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
 
+" Language specific settings
 autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 :set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
 
 set visualbell t_vb=
