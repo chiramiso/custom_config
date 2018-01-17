@@ -7,6 +7,7 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'jiangmiao/auto-pairs'
@@ -227,6 +228,7 @@ let g:NERDTreeIndicatorMapCustom = {
   \ "Clean"     : "✔︎",
   \ "Unknown"   : "?"
   \ }
+let NERDTreeShowHidden=1
 
 " Options for easymotion
 let g:EasyMotion_do_shade = 0
